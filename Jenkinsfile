@@ -16,7 +16,8 @@ node {
     stage('scanImage') {
         try {
             prismaCloudScanImage ca: '', cert: '', dockerAddress: 'unix:///var/run/docker.sock', ignoreImageBuildTime: true, image: "${env.registryName}/${env.imageName}:${env.BUILD_NUMBER}", key: '', logLevel: 'debug', podmanPath: '', project: '', resultsFile: 'prisma-cloud-scan-results.json'
-        } finally {
+        }
+        finally {
             prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
         }
     }
