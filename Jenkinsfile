@@ -23,11 +23,9 @@ node {
     }
           
     stage('pushImage') {
-        try {
             docker.withRegistry('') {
               image.push("${env.BUILD_NUMBER}")
             }
-        }  
     }
 
     post {
