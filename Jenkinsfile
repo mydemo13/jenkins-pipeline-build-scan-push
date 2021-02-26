@@ -13,7 +13,7 @@ node {
         image = docker.build("${env.registryName}/${env.imageName}:${env.BUILD_NUMBER}", ".")
     }
 
-    stage("scanImage') {
+    stage('scanImage') {
         try {
             prismaCloudScanImage ca: '', cert: '', dockerAddress: 'unix:///var/run/docker.sock', ignoreImageBuildTime: true, image: "${env.registryName}/${env.imageName}:${env.BUILD_NUMBER}", key: '', logLevel: 'debug', podmanPath: '', project: '', resultsFile: 'prisma-cloud-scan-results.json'
         } finally {
