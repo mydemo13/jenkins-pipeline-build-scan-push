@@ -1,4 +1,5 @@
 node {
+  stages {
     def image
 
     stage('Clean') {
@@ -27,10 +28,11 @@ node {
               image.push("${env.BUILD_NUMBER}")
             }
     }
+  }
 
-    post {
-      always {
-        sh "docker image rm ${env.registryName}/${env.imageName}:${env.BUILD_NUMBER}"
-      }
+  post {
+    always {
+      sh "docker image rm ${env.registryName}/${env.imageName}:${env.BUILD_NUMBER}"
     }
+  }
 }
